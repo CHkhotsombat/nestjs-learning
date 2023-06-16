@@ -1,2 +1,2 @@
-# nestjs-learning
+# NestJs Learning
 Learning about NestJs

@@ -1,0 +1,10 @@
+FROM node:18.16-alpine
+
+WORKDIR '/app'
+
+COPY package.json yarn.lock ./
+EXPOSE 30032
+
+RUN yarn
+
+COPY . .

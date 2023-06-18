@@ -11,32 +11,45 @@ export class ArticlesService {
     return this.prisma.article.create({ data: createArticleDto });
   }
 
-  findAll() {
+  findAll(where = {}) {
     return this.prisma.article.findMany({
-      where: { published: true },
+      where: { ...where },
       orderBy: { updatedAt: 'desc' },
     });
   }
 
-  findDrafts() {
-    return this.prisma.article.findMany({ where: { published: false } });
+  findPaging(where = {}, skip = 0, take = 10) {
+    return this.prisma.$transaction([
+      this.prisma.article.count({ where }),
+      this.prisma.article.findMany({
+        skip: skip * take,
+        take,
+        where,
+      }),
+    ]);
   }
 
-  findOne(id: number) {
+  findDrafts(where = {}) {
+    return this.prisma.article.findMany({
+      where: { published: false, ...where },
+    });
+  }
+
+  findOne(where = {}) {
     return this.prisma.article.findUnique({
-      where: { id },
+      where: { ...where },
       include: { author: true },
     });
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
+  update(where = {}, updateArticleDto: UpdateArticleDto) {
     return this.prisma.article.update({
-      where: { id },
+      where: { ...where },
       data: updateArticleDto,
     });
   }
 
-  remove(id: number) {
-    return this.prisma.article.delete({ where: { id } });
+  remove(where = {}) {
+    return this.prisma.article.delete({ where: { ...where } });
   }
 }

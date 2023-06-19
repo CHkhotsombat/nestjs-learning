@@ -1,0 +1,8 @@
+{
+  "here": "here",
+  "greet": "Dear",
+  "click": "Please click",
+  "greet_hello": "Hello there,",
+  "welcome": "Welcome to NestJs APIs.",
+  "service": "This is NestJs Learning APIs services."
+}

@@ -53,7 +53,7 @@ export class ArticlesController {
     );
 
     return {
-      count: count,
+      total: count,
       articles: articles.map((article) => new ArticleEntity(article)),
     };
   }

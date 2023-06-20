@@ -9,10 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import {
   HeaderResolver,
   I18nModule,
-  QueryResolver,
   AcceptLanguageResolver,
 } from 'nestjs-i18n';
-import * as path from 'path';
 
 @Module({
   imports: [

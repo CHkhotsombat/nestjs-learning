@@ -11,10 +11,10 @@ import {
   I18nModule,
   AcceptLanguageResolver,
 } from 'nestjs-i18n';
-import { BullModule } from '@nestjs/bull';
 import { AudioModule } from './audio/audio.module';
 import { JobsModule } from './jobs/jobs.module';
 import { QueuesModule } from './queues/queues.module';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -33,7 +33,7 @@ import { QueuesModule } from './queues/queues.module';
           host: configService.get<string>('REDIS_HOST'),
           port: configService.get<number>('REDIS_PORT'),
         },
-        prefix: 'queue-test-1',
+        prefix: 'bull-test',
       }),
       inject: [ConfigService],
     }),

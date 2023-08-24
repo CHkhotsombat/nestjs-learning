@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AudioController } from './audio.controller';
+import { HelloJobService } from './hello-job.service';
 import { QueuesModule } from 'src/queues/queues.module';
 
 @Module({
   imports: [QueuesModule],
-  controllers: [AudioController],
+  providers: [HelloJobService],
 })
-export class AudioModule {}
+export class HelloJobModule {}

@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  bullboard:
+    container_name: nestjs-learning-bullboard
+    image: deadly0/bull-board
+    restart: always
+    ports:
+      - 33000:3000
+    environment:
+      - REDIS_HOST=nestjs-learning-redis
+      - REDIS_PORT=6379
+networks:
+  default:
+    external:
+      name: my-learning-net
